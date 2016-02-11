@@ -1,0 +1,124 @@
+<h1>Pumi</h1>
+<p>
+  Welcome to the Pumi API. Pumi (ភូមិ pronounced Poom, which means Village in Khmer) is an <%= link_to("Open Source", "https://github.com/dwilkie/pumi_app") %> API containing Geodata for administrative regions in Cambodia including Provinces, Districts, Communes and Villages. Below you'll find a <%= link_to("No Frills Demo", "#demo") %> which uses the Pumi API to provide a UI for entering any location in Cambodia and some <%= link_to("documentation", "#documentation") %> on how to use the API. You can also checkout the official <%= link_to("Ruby gem", "https://github.com/dwilkie/pumi") %> for information on how to use this in a Ruby application.
+</p>
+
+<hr />
+
+<p>
+  <%= link_to("Docs", "https://github.com/dwilkie/pumi") %>
+</p>
+
+<h2 id="demo">No Frills&trade; Demo</h2>
+
+<p>
+  <%= link_to("View Page Source", "view-source:" + demo_url) %>
+</p>
+
+<%= form_for(:demo) do |f| -%>
+  <div id="province">
+    <%= f.label(:province_id) %>
+    <%= f.select(:province_id, [], {:prompt => true}, {:data => {:pumi_select_target => "district", :pumi_select_collection_url => pumi.provinces_path, :pumi_select_collection_label_method => "name_en", :pumi_select_collection_value_method => "id", :pumi_select_populate_on_load => true}}) %>
+  </div>
+
+  <div id="district">
+    <%= f.label(:district_id) %>
+    <%= f.select(:district_id, [], {:prompt => true}, {:data => {:pumi_select_id => "district", :pumi_select_target => "commune", :pumi_select_collection_url => pumi.districts_path(:province_id => "FILTER"), :pumi_select_collection_url_filter_interpolation_key => "FILTER", :pumi_select_collection_label_method => "name_en", :pumi_select_collection_value_method => "id", :pumi_select_disabled_target => "#district", :pumi_select_disabled_class => "my-disabled-class"}}) %>
+  </div>
+
+  <div id="commune">
+    <%= f.label(:commune_id) %>
+    <%= f.select(:commune_id, [], {:prompt => true}, {:data => {:pumi_select_id => "commune", :pumi_select_target => "village", :pumi_select_collection_url => pumi.communes_path(:district_id => "FILTER"), :pumi_select_collection_url_filter_interpolation_key => "FILTER", :pumi_select_collection_label_method => "name_en", :pumi_select_collection_value_method => "id", :pumi_select_disabled_target => "#commune", :pumi_select_disabled_class => "my-disabled-class"}}) %>
+  </div>
+
+  <div id="village">
+    <%= f.label(:village_id) %>
+    <%= f.select(:village_id, [], {:prompt => true}, {:data => {:pumi_select_id => "village", :pumi_select_collection_url => pumi.villages_path(:commune_id => "FILTER"), :pumi_select_collection_url_filter_interpolation_key => "FILTER", :pumi_select_collection_label_method => "name_en", :pumi_select_collection_value_method => "id", :pumi_select_disabled_target => "#village", :pumi_select_disabled_class => "my-disabled-class"}}) %>
+  </div>
+<% end -%>
+
+<hr />
+
+<h2 id="documentation">API</h2>
+
+<h3 id="provinces">Provinces</h3>
+
+<p>
+  <%= link_to(pumi.provinces_url, pumi.provinces_url) %>
+</p>
+
+<h4>Filter Options</h4>
+
+<dl>
+  <dt><code>id</code></dt>
+  <dd>Filter by id. E.g. <%= link_to(pumi.provinces_url(:id => "12"), pumi.provinces_url(:id => "12")) %></dd>
+  <dt><code>name_en</code></dt>
+  <dd>Filter by English Name. E.g. <%= link_to(pumi.provinces_url(:name_en => "Phnom Penh"), pumi.provinces_url(:name_en => "Phnom Penh")) %></dd>
+  <dt><code>name_km</code></dt>
+  <dd>Filter by Khmer Name. E.g. <%= link_to(pumi.provinces_url(:name_km => "ភ្នំពេញ"), pumi.provinces_url(:name_km => "ភ្នំពេញ")) %></dd>
+</dl>
+
+<h3 id="districts">Districts</h3>
+
+<p>
+  <%= link_to(pumi.districts_url, pumi.districts_url) %>
+</p>
+
+<h4>Filter Options</h4>
+
+<dl>
+  <dt><code>province_id</code></dt>
+  <dd>Filter by province id. E.g. <%= link_to(pumi.districts_url(:province_id => "12"), pumi.districts_url(:province_id => "12")) %></dd>
+  <dt><code>id</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+  <dt><code>name_en</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+  <dt><code>name_km</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+</dl>
+
+<h3 id="communes">Communes</h3>
+
+<p>
+  <%= link_to(pumi.communes_url, pumi.communes_url) %>
+</p>
+
+<h4>Filter Options</h4>
+
+<dl>
+  <dt><code>district_id</code></dt>
+  <dd>Filter by district id. E.g. <%= link_to(pumi.communes_url(:district_id => "1201"), pumi.communes_url(:district_id => "1201")) %></dd>
+  <dt><code>province_id</code></dt>
+  <dd>See <%= link_to("Districts", "#districts") %></dd>
+  <dt><code>id</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+  <dt><code>name_en</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+  <dt><code>name_km</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+</dl>
+
+<h3 id="villages">Villages</h3>
+
+<p>
+  <%= link_to(pumi.villages_url, pumi.villages_url) %>
+</p>
+
+<h4>Filter Options</h4>
+
+<dl>
+  <dt><code>commune_id</code></dt>
+  <dd>Filter by commune id. E.g. <%= link_to(pumi.villages_url(:commune_id => "120101"), pumi.villages_url(:commune_id => "120101")) %></dd>
+  <dt><code>district_id</code></dt>
+  <dd>See <%= link_to("Communes", "#communes") %></dd>
+  <dt><code>province_id</code></dt>
+  <dd>See <%= link_to("Districts", "#districts") %></dd>
+  <dt><code>id</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+  <dt><code>name_en</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+  <dt><code>name_km</code></dt>
+  <dd>See <%= link_to("Provinces", "#provinces") %></dd>
+</dl>
+
+<hr />

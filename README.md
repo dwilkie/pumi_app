@@ -1,3 +1,3 @@
-# PumiApp
+# Pumi API
 
-The PumiApp source code.
+The Pumi API source code
