@@ -1,22 +1,23 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 ruby(File.read(".ruby-version").strip) if File.exist?(".ruby-version")
 
-gem 'rails', '4.2.5.1'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
-gem 'puma'
-gem 'pumi', :github => "dwilkie/pumi", :require => "pumi/rails"
-gem 'rails_12factor'
+gem "coffee-rails"
+gem "jbuilder"
+gem "jquery-rails"
+gem "puma"
+gem "pumi", github: "dwilkie/pumi", require: "pumi/rails"
+gem "rails"
+gem "rails_12factor"
+gem "sass-rails"
+gem "uglifier"
 
 group :development, :test do
-  gem 'byebug'
+  gem "byebug"
+  gem "pry"
 end
 
 group :development do
-  gem 'foreman'
-  gem 'web-console', '~> 2.0'
+  gem "foreman"
+  gem "listen"
 end
