@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby(File.read(".ruby-version").strip) if File.exist?(".ruby-version")
+ruby "~> 2.6.0"
 
 gem "coffee-rails"
 gem "jbuilder"
