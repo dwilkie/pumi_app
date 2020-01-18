@@ -49,8 +49,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: |
-      git fetch --prune --unshallow
+
+    - name: Fetch unshallow
+      run: |
+        git fetch --prune --unshallow
 
     - name: Deploy to Heroku
       run: |
