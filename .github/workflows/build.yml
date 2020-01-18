@@ -15,6 +15,19 @@ jobs:
       with:
         ruby-version: 2.6.x
 
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: Cache ruby gems
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-pumiapp-${{ hashFiles('Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-pumiapp-
+
     - name: Build and test with Rake
       run: |
         gem install bundler
