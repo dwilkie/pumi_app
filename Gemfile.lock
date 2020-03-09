@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/dwilkie/pumi.git
-  revision: 2aded70025b20f906739bcc75793d0b4281106cd
+  revision: 9e2db0625b0b2d1438c2afb20fa97f85490b184a
   specs:
-    pumi (0.1.0)
+    pumi (0.2.0)
 
 GEM
   remote: https://rubygems.org/
