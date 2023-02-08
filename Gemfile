@@ -1,6 +1,5 @@
 source "https://rubygems.org"
-
-ruby File.readlines(".tool-versions").grep(/ruby/).first.match(/(?:\d+\.)?(?:\d+\.)?(?:\*|\d+)/)[0]
+ruby "3.2.0"
 
 gem "coffee-rails"
 gem "jbuilder"
