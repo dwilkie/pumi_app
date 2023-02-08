@@ -1,8 +1,8 @@
 # Pumi API
 
-The [Pumi API](https://pumiapp.herokuapp.com/) source code.
+The [Pumi API](https://pumi.onrender.com//) source code.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/dwilkie/pumi_app)
 
 ## Contributing
 
