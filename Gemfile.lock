@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/dwilkie/pumi.git
-  revision: 478c810772f28e3da610d7b3a507ba85ee41ce53
-  specs:
-    pumi (0.13.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -147,6 +141,7 @@ GEM
     public_suffix (5.0.1)
     puma (6.0.2)
       nio4r (~> 2.0)
+    pumi (0.14.0)
     racc (1.6.2)
     rack (2.2.6.2)
     rack-test (2.0.2)
@@ -253,7 +248,7 @@ DEPENDENCIES
   listen
   pry
   puma
-  pumi!
+  pumi
   rails
   rspec-rails
   sass-rails
