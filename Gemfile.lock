@@ -165,7 +165,7 @@ GEM
     public_suffix (5.0.4)
     puma (7.0.4)
       nio4r (~> 2.0)
-    pumi (0.37.0)
+    pumi (0.38.0)
     racc (1.8.1)
     rack (3.2.3)
     rack-session (2.1.1)
